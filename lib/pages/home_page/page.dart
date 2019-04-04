@@ -26,6 +26,10 @@ Widget buildView(
     appBar: AppBar(
       centerTitle: true,
       title: Text("五行缺脑"),
+      leading: IconButton(
+        icon: Icon(Icons.all_inclusive),
+        onPressed: () => dispatch(HomePageActionCreator.onShowLibrary()),
+      ),
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.tv),

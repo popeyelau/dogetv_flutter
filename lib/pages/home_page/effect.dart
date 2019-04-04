@@ -1,3 +1,4 @@
+import 'package:dogetv_flutter/pages/category_page/page.dart';
 import 'package:dogetv_flutter/pages/topic_page/page.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,8 @@ Effect<HomePageState> buildEffect() {
     Lifecycle.initState: _init,
     HomePageAction.onFetch: _onFetch,
     HomePageAction.onShowTV: _onShowTV,
-    HomePageAction.onShowTopic: _onShowTopic
+    HomePageAction.onShowTopic: _onShowTopic,
+    HomePageAction.onShowLibrary: _onShowLibrary
   });
 }
 
@@ -30,6 +32,12 @@ void _onFetch(Action action, Context<HomePageState> ctx) async {
 void _onShowTV(Action action, Context<HomePageState> ctx) async {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return TVPage().buildPage(null);
+  }));
+}
+
+void _onShowLibrary(Action action, Context<HomePageState> ctx) async {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
+    return CategoryPage().buildPage(null);
   }));
 }
 

@@ -1,7 +1,14 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:dogetv_flutter/models/home.dart';
 
-enum HomePageAction { onLoad, onFetch, didLoad, onShowTV, onShowTopic }
+enum HomePageAction {
+  onLoad,
+  onFetch,
+  didLoad,
+  onShowTV,
+  onShowLibrary,
+  onShowTopic
+}
 
 class HomePageActionCreator {
   static Action onLoadAction(bool isLoading) {
@@ -18,6 +25,10 @@ class HomePageActionCreator {
 
   static Action onShowTV() {
     return Action(HomePageAction.onShowTV);
+  }
+
+  static Action onShowLibrary() {
+    return Action(HomePageAction.onShowLibrary);
   }
 
   static Action onShowTopicAction(Topic topic) {
