@@ -191,6 +191,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -256,8 +257,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
-				"${PODS_ROOT}/../.symlinks/flutter/ios/Flutter.framework",
-				"${BUILT_PRODUCTS_DIR}/fluttertoast/fluttertoast.framework",
+				"${PODS_ROOT}/../.symlinks/flutter/ios-release/Flutter.framework",
 				"${BUILT_PRODUCTS_DIR}/path_provider/path_provider.framework",
 				"${BUILT_PRODUCTS_DIR}/screen/screen.framework",
 				"${BUILT_PRODUCTS_DIR}/sqflite/sqflite.framework",
@@ -267,7 +267,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flutter.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/fluttertoast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/path_provider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/screen.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqflite.framework",
@@ -400,7 +399,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.dogetvFlutter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.popeye.dogetvFlutter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -529,7 +528,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.dogetvFlutter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.popeye.dogetvFlutter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -558,7 +557,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.dogetvFlutter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.popeye.dogetvFlutter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
