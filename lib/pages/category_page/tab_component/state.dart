@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class CategoryTabPageState implements Cloneable<CategoryTabPageState> {
-  final GlobalKey<EasyRefreshState> easyRefreshKey =
-      GlobalKey<EasyRefreshState>();
-  final GlobalKey<RefreshFooterState> headerKey =
-      GlobalKey<RefreshFooterState>();
+  GlobalKey<EasyRefreshState> easyRefreshKey = GlobalKey<EasyRefreshState>();
+  GlobalKey<RefreshFooterState> headerKey = GlobalKey<RefreshFooterState>();
   CategoryVideo data;
   Category current = Category.values.first;
   String queryString = "-Shot";
@@ -23,7 +21,9 @@ class CategoryTabPageState implements Cloneable<CategoryTabPageState> {
       ..current = current
       ..queryString = queryString
       ..isLoading = isLoading
-      ..pageIndex = pageIndex;
+      ..pageIndex = pageIndex
+      ..easyRefreshKey = easyRefreshKey
+      ..headerKey = headerKey;
   }
 
   List<Video> get vidoes {

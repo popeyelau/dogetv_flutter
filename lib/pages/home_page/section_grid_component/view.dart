@@ -24,13 +24,11 @@ Widget buildView(List<Video> state, dispatch, ViewService viewService) {
             Expanded(
               child: Card(
                 elevation: 5.0,
-                child: Hero(
-                  child: Image(
-                    fit: BoxFit.fill,
-                    image: CachedNetworkImageProvider(
-                        "http://v.popeye.vip" + video.cover),
-                  ),
-                  tag: video.id,
+                child: CachedNetworkImage(
+                  imageUrl: "http://v.popeye.vip" + video.cover,
+                  fit: BoxFit.cover,
+                  placeholder: (ctx, _) =>
+                      Image.asset("assets/images/404@2x.png"),
                 ),
               ),
             ),

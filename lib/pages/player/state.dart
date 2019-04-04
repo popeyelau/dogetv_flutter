@@ -22,16 +22,19 @@ class PlayerPageState implements Cloneable<PlayerPageState> {
 PlayerPageState initState(Map<String, dynamic> map) {
   String streamURL = map["url"];
   List<Episode> episodes = map["episodes"];
+  bool live = map["live"] ?? false;
   PlayerPageState state = PlayerPageState();
   state.streamURL = streamURL;
   state.episodes = episodes;
   VideoPlayerController videoController =
       VideoPlayerController.network(streamURL);
   ChewieController chewieController = ChewieController(
-      videoPlayerController: videoController,
-      aspectRatio: 16 / 9,
-      autoPlay: true,
-      fullScreenByDefault: false);
+    videoPlayerController: videoController,
+    aspectRatio: 16 / 9,
+    autoPlay: true,
+    fullScreenByDefault: false,
+    isLive: live,
+  );
   state.videoController = videoController;
   state.chewieController = chewieController;
   return state;

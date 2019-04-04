@@ -5,6 +5,7 @@ import 'main.dart';
 Reducer<HomePageState> buildReducer() {
   return asReducer(<Object, Reducer<HomePageState>>{
     HomePageAction.didLoad: loadMovies,
+    HomePageAction.onLoad: onLoad,
     Lifecycle.initState: _init,
   });
 }
@@ -20,5 +21,11 @@ HomePageState loadMovies(HomePageState state, Action action) {
   Home home = action.payload;
   newState.home = home;
   newState.isLoading = false;
+  return newState;
+}
+
+HomePageState onLoad(HomePageState state, Action action) {
+  HomePageState newState = state.clone();
+  newState.isLoading = action.payload;
   return newState;
 }

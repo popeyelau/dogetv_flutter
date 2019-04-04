@@ -29,8 +29,10 @@ void _onFetch(Action action, Context<CategoryTabPageState> ctx) async {
 void _onLoadMore(Action action, Context<CategoryTabPageState> ctx) async {
   int index = ctx.state.pageIndex + 1;
   Category category = ctx.state.current;
+  String queryString = ctx.state.queryString;
 
-  APIs.getVideos(category, pageIndex: index).then((videos) {
+  APIs.getVideos(category, pageIndex: index, queryString: queryString)
+      .then((videos) {
     ctx.dispatch(CategoryTabPageActionCreator.didLoadMoreAction(videos));
   });
 }

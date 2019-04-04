@@ -13,10 +13,11 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
           child: Card(
             elevation: 5.0,
             child: Hero(
-              child: Image(
+              child: CachedNetworkImage(
+                imageUrl: "http://v.popeye.vip" + video.cover,
                 fit: BoxFit.cover,
-                image: CachedNetworkImageProvider(
-                    "http://v.popeye.vip" + video.cover),
+                placeholder: (ctx, _) =>
+                    Image.asset("assets/images/404@2x.png"),
               ),
               tag: video.id,
             ),

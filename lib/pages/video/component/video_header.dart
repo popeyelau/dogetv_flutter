@@ -14,12 +14,13 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Hero(
-            child: Image(
+            child: CachedNetworkImage(
               height: 200,
-              fit: BoxFit.cover,
-              image: CachedNetworkImageProvider(video.cover.startsWith("http")
+              imageUrl: video.cover.startsWith("http")
                   ? video.cover
-                  : "http://v.popeye.vip" + video.cover),
+                  : "http://v.popeye.vip" + video.cover,
+              fit: BoxFit.cover,
+              placeholder: (ctx, _) => Image.asset("assets/images/404@2x.png"),
             ),
             tag: video.id,
           ),
