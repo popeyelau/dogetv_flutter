@@ -15,11 +15,14 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
             elevation: 5,
             child: Stack(
               children: [
-                CachedNetworkImage(
-                  imageUrl: "http://v.popeye.vip" + video.cover,
-                  fit: BoxFit.fitWidth,
-                  placeholder: (ctx, _) =>
-                      Image.asset("assets/images/404@2x.png"),
+                Hero(
+                  tag: video.id,
+                  child: CachedNetworkImage(
+                    imageUrl: "http://v.popeye.vip" + video.cover,
+                    fit: BoxFit.fitWidth,
+                    placeholder: (ctx, _) =>
+                        Image.asset("assets/images/404@2x.png"),
+                  ),
                 ),
                 Positioned(
                   bottom: 0,

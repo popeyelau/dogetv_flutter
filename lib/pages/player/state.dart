@@ -34,7 +34,6 @@ PlayerPageState initState(Map<String, dynamic> map) {
     videoPlayerController: videoController,
     // aspectRatio: 16 / 9,
     autoPlay: true,
-    fullScreenByDefault: isLive,
     isLive: isLive,
   );
   state.videoController = videoController;
