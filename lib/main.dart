@@ -3,10 +3,8 @@ import 'package:dogetv_flutter/pages/home_page/page.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
-  runApp(DogeTVApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) => runApp(DogeTVApp()));
 }
 
 class DogeTVApp extends StatelessWidget {

@@ -12,24 +12,24 @@ class APIs {
     Map topics = await APIClient().get("/topics");
 
     Home home = Home();
-
     for (var section in sections["data"]) {
       home.sections.add(VideoSection.fromJson(section));
     }
     for (var section in topics["data"]) {
       home.topics.add(Topic.fromJson(section));
     }
-
     return home;
   }
 
   static Future<CategoryVideo> getVideos(Category category,
       {String queryString = "-Shot", int pageIndex = 1}) async {
     String key = category.toString().replaceAll("Category.", "");
+
     Map map =
         await APIClient().get("/videos/$key?p=$pageIndex&query=$queryString");
-    if (map["data"] == null) {
-      return null;
+
+    if (map["code"] == null) {
+      return Future.error(map["msg"]);
     }
 
     CategoryVideo videos = CategoryVideo.fromJson(map["data"]);
@@ -39,10 +39,20 @@ class APIs {
   static Future<List<Topic>> getTopics() async {
     Map map = await APIClient().get("/topics");
     List<Topic> topics = [];
-    for (var video in map["data"]) {
-      topics.add(Topic.fromJson(video));
+    for (var topic in map["data"]) {
+      topics.add(Topic.fromJson(topic));
     }
     return topics;
+  }
+
+  static Future<List<Video>> search(String keywords,
+      {int pageIndex = 1}) async {
+    Map map = await APIClient().get("/search?wd=$keywords&p=$pageIndex");
+    List<Video> results = [];
+    for (var video in map["data"]) {
+      results.add(Video.fromJson(video));
+    }
+    return results;
   }
 
   static Future<List<Video>> getTopicDetail(String topicId) async {

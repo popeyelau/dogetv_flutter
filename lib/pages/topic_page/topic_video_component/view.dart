@@ -11,18 +11,33 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
       child: Column(children: <Widget>[
         Expanded(
           child: Card(
-            elevation: 5.0,
-            child: Hero(
-              child: CachedNetworkImage(
-                imageUrl: "http://v.popeye.vip" + video.cover,
-                fit: BoxFit.cover,
-                placeholder: (ctx, _) =>
-                    Image.asset("assets/images/404@2x.png"),
-              ),
-              tag: video.id,
+            margin: EdgeInsets.all(0),
+            elevation: 5,
+            child: Stack(
+              children: [
+                CachedNetworkImage(
+                  imageUrl: "http://v.popeye.vip" + video.cover,
+                  fit: BoxFit.fitWidth,
+                  placeholder: (ctx, _) =>
+                      Image.asset("assets/images/404@2x.png"),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                      padding: EdgeInsets.all(2),
+                      color: Colors.black.withAlpha(60),
+                      child: Text(
+                        video.state,
+                        style: TextStyle(fontSize: 12, color: Colors.white),
+                      )),
+                ),
+              ],
             ),
           ),
         ),
+        SizedBox(height: 6),
         Text(
           video.name,
           maxLines: 1,

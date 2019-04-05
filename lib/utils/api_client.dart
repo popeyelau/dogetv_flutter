@@ -1,9 +1,5 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-
-typedef NetworkError(String errorMsg);
-typedef NetworkSuccess(Map<String, dynamic> data);
 
 class APIClient {
   Dio dio;
@@ -16,6 +12,29 @@ class APIClient {
     if (dio == null) {
       BaseOptions options = BaseOptions(baseUrl: "https://tv.popeye.vip");
       dio = Dio(options);
+      dio = Dio(BaseOptions(
+        baseUrl: "https://tv.popeye.vip",
+        connectTimeout: 10000,
+        receiveTimeout: 10000,
+      ));
+      dio.interceptors
+          .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
+        print("\n================== 请求数据 ==========================");
+        print("url = ${options.uri.toString()}");
+        print("headers = ${options.headers}");
+        print("params = ${options.data}");
+      }, onResponse: (Response response) {
+        print("\n================== 响应数据 ==========================");
+        print("code = ${response.statusCode}");
+        print("data = ${response.data}");
+        print("\n");
+      }, onError: (DioError e) {
+        print("\n================== 错误响应数据 ======================");
+        print("type = ${e.type}");
+        print("message = ${e.message}");
+        print("stackTrace = ${e.stackTrace}");
+        print("\n");
+      }));
     }
   }
 
@@ -26,39 +45,21 @@ class APIClient {
     return _instance;
   }
 
-  //get方法返回一个map的future类型
   Future get(String url,
-      {Map data,
-      Options options,
-      CancelToken cancelToken,
-      NetworkError onError}) async {
-    print("GET:$url");
+      {Map data, Options options, CancelToken cancelToken}) async {
     return _request(url, "GET",
-        data: data,
-        options: options,
-        cancelToken: cancelToken,
-        onError: onError);
+        data: data, options: options, cancelToken: cancelToken);
   }
 
   //post方法
   Future post(String url,
-      {Map data,
-      Options options,
-      CancelToken cancelToken,
-      NetworkSuccess onSuccess,
-      NetworkError onError}) async {
+      {Map data, Options options, CancelToken cancelToken}) async {
     return _request(url, "POST",
-        data: data,
-        options: options,
-        cancelToken: cancelToken,
-        onError: onError);
+        data: data, options: options, cancelToken: cancelToken);
   }
 
   Future _request(String url, String type,
-      {Map data,
-      Options options,
-      CancelToken cancelToken,
-      NetworkError onError}) async {
+      {Map data, Options options, CancelToken cancelToken}) async {
     try {
       Response response;
       if (type == "GET") {
@@ -73,9 +74,6 @@ class APIClient {
         response = await dio.post(url, data: data, options: options);
       }
 
-      print("response:$response");
-      print("response:statusCode${response.statusCode}");
-
       if (response.statusCode != 200) {
         var errorMsg = "网络请求错误，状态码:${response.statusCode}";
         return new Future.error(errorMsg);
@@ -83,7 +81,7 @@ class APIClient {
         return response.data;
       }
     } catch (e) {
-      print(e.toString());
+      return new Future.error(e.toString());
     }
   }
 }

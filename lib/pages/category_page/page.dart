@@ -1,4 +1,5 @@
 import 'package:dogetv_flutter/models/category.dart';
+import 'package:dogetv_flutter/pages/category_page/action.dart';
 import 'package:dogetv_flutter/pages/category_page/effect.dart';
 import 'package:dogetv_flutter/pages/category_page/reducer.dart';
 import 'package:dogetv_flutter/pages/category_page/state.dart';
@@ -32,16 +33,6 @@ Widget buildView(
       appBar: AppBar(
         centerTitle: true,
         title: Text("影视库"),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.data_usage),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.view_list),
-            onPressed: () {},
-          ),
-        ],
         bottom: TabBar(
           indicatorSize: TabBarIndicatorSize.label,
           isScrollable: false,

@@ -12,9 +12,10 @@ Effect<VideoPageState> buildEffect() {
 }
 
 void _init(Action action, Context<VideoPageState> ctx) async {
+  /*
   APIs.getVideo(ctx.state.videoId).then((videoDetail) {
     ctx.dispatch(VideoPageActionCreator.didLoadAction(videoDetail));
-  });
+  });*/
 }
 
 void _onFetch(Action action, Context<VideoPageState> ctx) async {

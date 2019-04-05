@@ -11,12 +11,13 @@ List<Widget> buildQuerySet(QueryPanelState state, dynamic dispatch) {
     return [];
   }
   return state.optionSets.map((querySet) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+    return Container(
+      margin: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 8),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.symmetric(vertical: 8),
             child: Text("${querySet.title}: ",
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14)),
           ),
@@ -32,12 +33,16 @@ List<Widget> buildQuerySet(QueryPanelState state, dynamic dispatch) {
                     dispatch(CategoryTabPageActionCreator.onUpdateQuery());
                   },
                   child: Container(
-                      padding: EdgeInsets.all(8),
+                      padding: EdgeInsets.symmetric(horizontal: 8),
                       child: Text(
                         option.text,
-                        style: TextStyle(
-                            color:
-                                option.isSelected ? Colors.red : Colors.white),
+                        style: option.isSelected
+                            ? TextStyle(
+                                color: Theme.of(context).accentColor,
+                                decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.w500)
+                            : TextStyle(
+                                color: Theme.of(context).textTheme.title.color),
                       )),
                 );
               },

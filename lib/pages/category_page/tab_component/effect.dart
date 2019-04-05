@@ -7,9 +7,10 @@ import 'package:fish_redux/fish_redux.dart';
 Effect<CategoryTabPageState> buildEffect() {
   return combineEffects(<Object, Effect<CategoryTabPageState>>{
     Lifecycle.initState: _init,
+    Lifecycle.dispose: _dispose,
     CategoryTabPageAction.onFetch: _onFetch,
     CategoryTabPageAction.onUpdateQuery: _onUpdateQuery,
-    CategoryTabPageAction.onLoadMore: _onLoadMore
+    CategoryTabPageAction.onLoadMore: _onLoadMore,
   });
 }
 
@@ -17,6 +18,11 @@ void _init(Action action, Context<CategoryTabPageState> ctx) async {
   APIs.getVideos(ctx.state.current).then((videos) {
     ctx.dispatch(CategoryTabPageActionCreator.didLoadAction(videos));
   });
+}
+
+void _dispose(Action action, Context<CategoryTabPageState> ctx) async {
+  ctx.state.easyRefreshKey = null;
+  ctx.state.headerKey = null;
 }
 
 void _onFetch(Action action, Context<CategoryTabPageState> ctx) async {

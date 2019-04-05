@@ -10,17 +10,19 @@ Effect<PlayerPageState> buildEffect() {
 }
 
 void _init(Action action, Context<PlayerPageState> ctx) async {
-  SystemChrome.setPreferredOrientations([
+  List<DeviceOrientation> orientations = [
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,
     DeviceOrientation.landscapeLeft,
-  ]);
+  ];
+  SystemChrome.setPreferredOrientations(orientations);
 }
 
 void _dispose(Action action, Context<PlayerPageState> ctx) async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-  ]);
-  ctx.state.videoController.dispose();
-  ctx.state.chewieController.dispose();
+  ]).then((_) {
+    ctx.state.chewieController.dispose();
+    ctx.state.videoController.dispose();
+  });
 }

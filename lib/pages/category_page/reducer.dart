@@ -2,11 +2,10 @@ import 'package:fish_redux/fish_redux.dart';
 import 'main.dart';
 
 Reducer<CategoryPageState> buildReducer() {
-  return asReducer(<Object, Reducer<CategoryPageState>>{
-    CateogryPageAction.didLoad: didLoad,
-  });
+  return asReducer(<Object, Reducer<CategoryPageState>>{});
 }
 
-CategoryPageState didLoad(CategoryPageState state, Action action) {
-  return state;
+CategoryPageState didChangedSource(CategoryPageState state, Action action) {
+  CategoryPageState newState = CategoryPageState();
+  return newState;
 }

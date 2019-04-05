@@ -33,9 +33,9 @@ Widget buildView(
           itemCount: listAdapter.itemCount,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 9 / 14,
+              childAspectRatio: 0.62,
               mainAxisSpacing: 8.0,
-              crossAxisSpacing: 2.0),
+              crossAxisSpacing: 4.0),
         )),
   );
 }

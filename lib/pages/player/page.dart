@@ -5,21 +5,6 @@ import 'package:dogetv_flutter/pages/player/state.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
-/*
-class VideoPage extends StatefulWidget {
-  @override
-  _VideoPageState createState() => _VideoPageState();
-}
-
-class _VideoPageState extends State<VideoPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-
-    );
-  }
-}*/
-
 class PlayerPage extends Page<PlayerPageState, Map<String, dynamic>> {
   PlayerPage()
       : super(
@@ -41,10 +26,11 @@ Widget buildView(
     builder: (context, orientation) {
       return Scaffold(
         body: Container(
+            color: Colors.black,
             child: ListView.builder(
-          itemBuilder: listAdapter.itemBuilder,
-          itemCount: listAdapter.itemCount,
-        )),
+              itemBuilder: listAdapter.itemBuilder,
+              itemCount: listAdapter.itemCount,
+            )),
       );
     },
   );

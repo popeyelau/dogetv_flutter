@@ -26,6 +26,7 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
           ),
           SizedBox(width: 8),
           Expanded(
+            flex: 2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,

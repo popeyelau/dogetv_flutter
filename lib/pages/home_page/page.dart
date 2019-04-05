@@ -37,12 +37,14 @@ Widget buildView(
         ),
         IconButton(
           icon: Icon(Icons.search),
-          onPressed: () {},
+          onPressed: () => dispatch(HomePageActionCreator.onShowSearchAction()),
         ),
       ],
     ),
     body: ModalProgressHUD(
       dismissible: true,
+      color: Colors.transparent,
+      opacity: 1,
       child: EasyRefresh(
         refreshHeader: BallPulseHeader(
           color: Theme.of(viewService.context).primaryColorLight,

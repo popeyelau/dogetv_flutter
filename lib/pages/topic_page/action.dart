@@ -16,7 +16,7 @@ class TopicDetailPageActionCreator {
     return Action(TopicDetailPageAction.didLoad, payload: videos);
   }
 
-  static Action onFetchAction() {
-    return Action(TopicDetailPageAction.onFetch);
+  static Action onFetchAction(String keywords) {
+    return Action(TopicDetailPageAction.onFetch, payload: keywords);
   }
 }
