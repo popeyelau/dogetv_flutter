@@ -1,5 +1,4 @@
 import 'package:dogetv_flutter/models/category.dart';
-import 'package:dogetv_flutter/pages/category_page/action.dart';
 import 'package:dogetv_flutter/pages/category_page/effect.dart';
 import 'package:dogetv_flutter/pages/category_page/reducer.dart';
 import 'package:dogetv_flutter/pages/category_page/state.dart';
@@ -29,6 +28,7 @@ Widget buildView(
 
   return DefaultTabController(
     length: tabs.length,
+    initialIndex: state.initialIndex,
     child: Scaffold(
       appBar: AppBar(
         centerTitle: true,

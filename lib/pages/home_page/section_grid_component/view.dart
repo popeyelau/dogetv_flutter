@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dogetv_flutter/models/video.dart';
 import 'package:dogetv_flutter/pages/home_page/action.dart';
-import 'package:dogetv_flutter/pages/home_page/section_grid_component/action.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
@@ -44,6 +43,8 @@ Widget buildView(List<Video> state, dispatch, ViewService viewService) {
                         color: Colors.black.withAlpha(60),
                         child: Text(
                           video.state,
+                          maxLines: 1,
+                          overflow: TextOverflow.clip,
                           style: TextStyle(fontSize: 12, color: Colors.white),
                         )),
                   ),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 Widget buildView(String state, dispatch, ViewService viewService) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
     child: Row(
       children: <Widget>[
         Container(
@@ -20,11 +20,14 @@ Widget buildView(String state, dispatch, ViewService viewService) {
             textAlign: TextAlign.left,
           ),
         ),
-        IconButton(
-          icon: Icon(
-            Icons.keyboard_arrow_right,
+        GestureDetector(
+          onTap: () => dispatch(SectionHeaderActionCreator.onShowMore(state)),
+          child: Row(
+            children: <Widget>[
+              Text("更多"),
+              Icon(Icons.keyboard_arrow_right),
+            ],
           ),
-          onPressed: () => dispatch(SectionHeaderActionCreator.onShowMore()),
         )
       ],
     ),

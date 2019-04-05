@@ -26,7 +26,6 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
           ),
           SizedBox(width: 8),
           Expanded(
-            flex: 2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -77,18 +76,7 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
                               text: video.actor,
                               style: TextStyle(fontWeight: FontWeight.normal))
                         ]),
-                    maxLines: 3),
-                Text.rich(
-                  TextSpan(
-                      text: "简介: ",
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                      children: [
-                        TextSpan(
-                            text: video.desc,
-                            style: TextStyle(fontWeight: FontWeight.normal))
-                      ]),
-                  maxLines: 5,
-                ),
+                    maxLines: 4),
               ],
             ),
           )

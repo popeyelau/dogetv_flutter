@@ -42,7 +42,7 @@ void _onShowTV(Action action, Context<HomePageState> ctx) async {
 
 void _onShowLibrary(Action action, Context<HomePageState> ctx) async {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
-    return CategoryPage().buildPage(null);
+    return CategoryPage().buildPage({"index": 0});
   }));
 }
 

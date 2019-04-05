@@ -30,6 +30,8 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
                       color: Colors.black.withAlpha(60),
                       child: Text(
                         video.state,
+                        maxLines: 1,
+                        overflow: TextOverflow.clip,
                         style: TextStyle(fontSize: 12, color: Colors.white),
                       )),
                 ),

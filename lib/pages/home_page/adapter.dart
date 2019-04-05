@@ -25,7 +25,7 @@ class HomeMovieListConnector extends ConnOp<HomePageState, List<ItemBean>> {
     items.add(ItemBean("topic", state.home.topics));
     for (var section in state.home.sections) {
       items.add(ItemBean("header", section.title));
-      items.add(ItemBean("grid", section.items));
+      items.add(ItemBean("grid", section.items.take(9).toList()));
     }
 
     return items;

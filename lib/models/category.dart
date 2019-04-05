@@ -9,6 +9,8 @@ enum Category {
   documentary,
 }
 
+const List<String> CategoryTitles = ["新近影视推荐", "最新开播电视剧", "最新开播综艺", "最新番动漫"];
+
 class CategoryVideo {
   List<QueryOptionSet> query = [];
   List<Video> items = [];

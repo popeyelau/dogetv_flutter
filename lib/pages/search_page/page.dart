@@ -34,7 +34,7 @@ Widget buildView(
         title: TextField(
             autofocus: true,
             controller: state.controller,
-            decoration: InputDecoration(hintText: "Search...")),
+            decoration: InputDecoration(hintText: "搜索电影/演员/导演")),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
