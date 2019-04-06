@@ -20,15 +20,18 @@ class VideoCard extends StatelessWidget {
               // elevation: 5,
               child: Stack(
                 children: [
-                  VideoCover(
-                      path: video.cover, heroTag: heroEnable ? video.id : null),
+                  SizedBox.expand(
+                    child: VideoCover(
+                        path: video.cover,
+                        heroTag: heroEnable ? video.id : null),
+                  ),
                   Positioned(
                     bottom: 0,
                     left: 0,
                     right: 0,
                     child: Container(
                         padding: EdgeInsets.all(2),
-                        color: Colors.black.withAlpha(60),
+                        color: Colors.black.withAlpha(70),
                         child: Text(
                           video.state,
                           maxLines: 1,
