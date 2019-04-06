@@ -18,13 +18,6 @@ VideoPageState didLoad(VideoPageState state, Action action) {
   return newState;
 }
 
-/*
-VideoPageState onUpdateSource(VideoPageState state, Action action) {
-  VideoPageState newState = state.clone();
-  newState.source = action.payload;
-  return newState;
-}*/
-
 VideoPageState didUpdateSource(VideoPageState state, Action action) {
   VideoPageState newState = state.clone();
   newState.source = action.payload["source"];

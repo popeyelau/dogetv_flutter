@@ -28,7 +28,9 @@ class VideoDetailListConnector extends ConnOp<VideoPageState, List<ItemBean>> {
         ItemBean("section-header", {"title": "线路", "subTitle": "线路画质从高到低"}));
     List<int> servers =
         List.generate(min(state.videoDetail.video.source, 8), (item) => item);
-    items.add(ItemBean("servers", servers));
+    int selectedSource = int.tryParse(state.source);
+    Resource resource = Resource(items: servers, selectedItem: selectedSource);
+    items.add(ItemBean("servers", resource));
     items.add(ItemBean("section-header", {"title": "分集", "subTitle": null}));
     items.add(ItemBean("episodes", state.videoDetail.episodes));
     return items;

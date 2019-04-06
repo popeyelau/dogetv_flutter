@@ -4,12 +4,13 @@ import 'package:dogetv_flutter/models/video_detail.dart';
 class VideoPageState implements Cloneable<VideoPageState> {
   VideoDetail videoDetail = VideoDetail();
   String videoId;
-  String source = "";
+  String source = "0";
 
   @override
   VideoPageState clone() {
     return VideoPageState()
       ..videoDetail = videoDetail
+      ..source = source
       ..videoId = videoId;
   }
 }

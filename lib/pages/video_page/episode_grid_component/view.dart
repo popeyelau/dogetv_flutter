@@ -25,10 +25,15 @@ Widget buildView(List<Episode> state, dispatch, ViewService viewService) {
                 color: Colors.white24,
                 width: 0.5,
               )),
-          child: Center(
-            child: Text(
-              episode.title,
-              textAlign: TextAlign.center,
+          child: Padding(
+            padding: EdgeInsets.all(2),
+            child: Center(
+              child: Text(
+                episode.title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ),
