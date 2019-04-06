@@ -22,7 +22,7 @@ class PlayerListConnector extends ConnOp<PlayerPageState, List<ItemBean>> {
     List<ItemBean> items = [];
     items.add(ItemBean("player", state));
     if (state.episodes != null && state.episodes.length > 0) {
-      items.add(ItemBean("header", "分集"));
+      items.add(ItemBean("header", {"title": "分集", "subTitle": null}));
       items.add(ItemBean("episodes", state.episodes));
     }
     return items;

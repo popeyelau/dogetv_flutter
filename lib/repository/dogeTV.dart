@@ -1,36 +1,41 @@
+import 'dart:convert';
+
 import 'package:dogetv_flutter/models/category.dart';
 import 'package:dogetv_flutter/models/channel.dart';
 import 'package:dogetv_flutter/models/episode.dart';
 import 'package:dogetv_flutter/models/video.dart';
 import 'package:dogetv_flutter/models/home.dart';
 import 'package:dogetv_flutter/models/video_detail.dart';
-import 'package:dogetv_flutter/utils/api_client.dart';
+import 'package:http/http.dart' as http;
 
 class APIs {
-  static Future<Home> getMovies() async {
-    Future getTopics = APIClient().get("/topics");
-    Future getSections = APIClient().get("/videos");
+  static const String BASE_URL = "https://tv.popeye.vip";
 
-    var responseDatas = await Future.wait([getTopics, getSections]);
-    Map topics = responseDatas[0];
-    Map sections = responseDatas[1];
+  static Future<Home> getMovies() async {
+    Future getTopics = http.get("$BASE_URL/topics");
+    Future getSections = http.get("$BASE_URL/videos");
+
+    List<http.Response> responseDatas =
+        await Future.wait([getTopics, getSections]);
+
+    Map topics = json.decode(responseDatas.first.body);
+    Map sections = json.decode(responseDatas.last.body);
 
     Home home = Home();
-    for (var section in sections["data"]) {
-      home.sections.add(VideoSection.fromJson(section));
-    }
-    for (var section in topics["data"]) {
-      home.topics.add(Topic.fromJson(section));
-    }
+    home.sections = (sections["data"] as List)
+        .map((v) => VideoSection.fromJson(v))
+        .toList();
+    home.topics =
+        (topics["data"] as List).map((v) => Topic.fromJson(v)).toList();
     return home;
   }
 
   static Future<CategoryVideo> getVideos(Category category,
       {String queryString = "-Shot", int pageIndex = 1}) async {
     String key = category.toString().replaceAll("Category.", "");
-
-    Map map =
-        await APIClient().get("/videos/$key?p=$pageIndex&query=$queryString");
+    var response =
+        await http.get("$BASE_URL/videos/$key?p=$pageIndex&query=$queryString");
+    Map map = json.decode(response.body);
 
     if (map["data"] == null) {
       return Future.error(map["msg"]);
@@ -41,21 +46,19 @@ class APIs {
   }
 
   static Future<List<Topic>> getTopics() async {
-    Map map = await APIClient().get("/topics");
-    List<Topic> topics = [];
-    for (var topic in map["data"]) {
-      topics.add(Topic.fromJson(topic));
-    }
+    var response = await http.get("$BASE_URL/topics");
+    Map map = json.decode(response.body);
+    List<Topic> topics =
+        (map["data"] as List).map((v) => Topic.fromJson(v)).toList();
     return topics;
   }
 
   static Future<List<Video>> search(String keywords,
       {int pageIndex = 1}) async {
-    Map map = await APIClient().get("/search?wd=$keywords&p=$pageIndex");
-    List<Video> results = [];
-    for (var video in map["data"]) {
-      results.add(Video.fromJson(video));
-    }
+    var response = await http.get("$BASE_URL/search?wd=$keywords&p=$pageIndex");
+    Map map = json.decode(response.body);
+    List<Video> results =
+        (map["data"] as List).map((v) => Video.fromJson(v)).toList();
     return results;
   }
 
@@ -63,57 +66,55 @@ class APIs {
     if (topicId == null) {
       return null;
     }
-    Map map = await APIClient().get("/topic/$topicId");
-    List<Video> topicVideos = [];
-    for (var video in map["data"]["items"]) {
-      topicVideos.add(Video.fromJson(video));
-    }
+    var response = await http.get("$BASE_URL/topic/$topicId");
+    Map map = json.decode(response.body);
+    List<Video> topicVideos =
+        (map["data"]["items"] as List).map((v) => Video.fromJson(v)).toList();
     return topicVideos;
   }
 
   static Future<List<Channel>> getTVChannels() async {
-    Map map = await APIClient().get("/tv");
-    List<Channel> channels = [];
-    for (var channel in map["data"]) {
-      channels.add(Channel.fromJson(channel));
-    }
+    var response = await http.get("$BASE_URL/tv");
+    Map map = json.decode(response.body);
+    List<Channel> channels =
+        (map["data"] as List).map((v) => Channel.fromJson(v)).toList();
     channels.sort((r1, r2) => r1.name.compareTo(r2.name));
     return channels;
   }
 
   static Future<VideoDetail> getVideo(String videoId) async {
-    Future getVideo = APIClient().get("/video/$videoId");
-    Future getEpisodes = APIClient().get("/video/$videoId/episodes");
+    Future getVideo = http.get("$BASE_URL/video/$videoId");
+    Future getEpisodes = http.get("$BASE_URL/video/$videoId/episodes");
 
-    var responseDatas = await Future.wait([getVideo, getEpisodes]);
-    Map video = responseDatas[0];
-    Map episodesMap = responseDatas[1];
+    List<http.Response> responseDatas =
+        await Future.wait([getVideo, getEpisodes]);
+    Map video = json.decode(responseDatas[0].body);
+    Map episodesMap = json.decode(responseDatas[1].body);
 
     if (video["code"] != 200 || episodesMap["code"] != 200) {
       return null;
     }
 
     VideoDetail videoDetail = VideoDetail();
-
     videoDetail.video = Video.fromJson(video["data"]);
-    List<Episode> episodes = [];
-    for (var episode in episodesMap["data"]) {
-      episodes.add(Episode.fromJson(episode));
-    }
-    videoDetail.episodes = episodes;
+    videoDetail.episodes =
+        (episodesMap["data"] as List).map((v) => Episode.fromJson(v)).toList();
     return videoDetail;
   }
 
   static Future<String> getStreamURL(String source) async {
     Map params = {"url": source};
-    Map stream = await APIClient().post("/video/resolve", data: params);
+    var response = await http.post("$BASE_URL/video/resolve", body: params);
+    Map stream = json.decode(response.body);
     return stream["data"];
   }
 
   static Future<List<Episode>> getEpisodes(
       String videoId, String source) async {
-    Map episodesMap =
-        await APIClient().get("/video/$videoId/episodes?source=$source");
+    var response =
+        await http.get("$BASE_URL/video/$videoId/episodes?source=$source");
+    var episodesMap = json.decode(response.body);
+
     List<Episode> episodes = [];
     if (episodesMap["code"] != 200) {
       return episodes;

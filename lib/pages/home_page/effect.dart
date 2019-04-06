@@ -27,7 +27,6 @@ void _init(Action action, Context<HomePageState> ctx) async {
     ctx.dispatch(HomePageActionCreator.didLoadAction(movies));
   }).catchError((err) {
     print(err.toString());
-    throw err;
   });
 }
 
