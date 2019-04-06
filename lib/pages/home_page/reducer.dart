@@ -1,6 +1,7 @@
+import 'package:dogetv_flutter/pages/home_page/action.dart';
+import 'package:dogetv_flutter/pages/home_page/state.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:dogetv_flutter/models/home.dart';
-import 'main.dart';
 
 Reducer<HomePageState> buildReducer() {
   return asReducer(<Object, Reducer<HomePageState>>{

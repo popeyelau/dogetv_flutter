@@ -1,6 +1,10 @@
+import 'package:dogetv_flutter/pages/home_page/action.dart';
+import 'package:dogetv_flutter/pages/home_page/adapter.dart';
+import 'package:dogetv_flutter/pages/home_page/state.dart';
+import 'package:dogetv_flutter/pages/home_page/effect.dart';
+import 'package:dogetv_flutter/pages/home_page/reducer.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:dogetv_flutter/pages/home_page/main.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/ball_pulse_header.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';

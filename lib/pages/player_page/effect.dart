@@ -22,7 +22,8 @@ void _dispose(Action action, Context<PlayerPageState> ctx) async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((_) {
-    ctx.state.chewieController.dispose();
+    ctx.state.videoController.pause();
     ctx.state.videoController.dispose();
+    ctx.state.chewieController.dispose();
   });
 }
