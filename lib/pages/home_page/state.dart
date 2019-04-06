@@ -18,6 +18,10 @@ class HomePageState implements Cloneable<HomePageState> {
       ..home = home
       ..isLoading = isLoading;
   }
+
+  bool get isDataReady {
+    return home.topics.isNotEmpty && home.sections.isNotEmpty;
+  }
 }
 
 HomePageState initState(Map<String, dynamic> map) {

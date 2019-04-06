@@ -1,4 +1,3 @@
-import 'package:dogetv_flutter/models/query.dart';
 import 'package:fish_redux/fish_redux.dart';
 
 enum QueryPanelAction { onSelected }

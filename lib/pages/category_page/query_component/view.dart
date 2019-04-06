@@ -1,5 +1,4 @@
 import 'package:dogetv_flutter/models/query.dart';
-import 'package:dogetv_flutter/pages/category_page/grid_item_component/action.dart';
 import 'package:dogetv_flutter/pages/category_page/query_component/action.dart';
 import 'package:dogetv_flutter/pages/category_page/query_component/state.dart';
 import 'package:dogetv_flutter/pages/category_page/tab_component/action.dart';

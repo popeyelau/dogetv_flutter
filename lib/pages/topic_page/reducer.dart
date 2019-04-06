@@ -1,6 +1,7 @@
+import 'package:dogetv_flutter/pages/topic_page/action.dart';
+import 'package:dogetv_flutter/pages/topic_page/state.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:dogetv_flutter/models/video.dart';
-import 'main.dart';
 
 Reducer<TopicDetailPageState> buildReducer() {
   return asReducer(<Object, Reducer<TopicDetailPageState>>{

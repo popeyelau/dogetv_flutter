@@ -1,7 +1,7 @@
 import 'package:dogetv_flutter/models/category.dart';
 import 'package:dogetv_flutter/pages/category_page/tab_component/action.dart';
 import 'package:dogetv_flutter/pages/category_page/tab_component/state.dart';
-import 'package:dogetv_flutter/repository/movie.dart';
+import 'package:dogetv_flutter/repository/dogeTV.dart';
 import 'package:fish_redux/fish_redux.dart';
 
 Effect<CategoryTabPageState> buildEffect() {

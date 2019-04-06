@@ -1,7 +1,7 @@
 import 'package:dogetv_flutter/pages/search_page/action.dart';
 import 'package:dogetv_flutter/pages/search_page/state.dart';
 import 'package:fish_redux/fish_redux.dart';
-import 'package:dogetv_flutter/repository/movie.dart';
+import 'package:dogetv_flutter/repository/dogeTV.dart';
 
 Effect<SearchPageState> buildEffect() {
   return combineEffects(<Object, Effect<SearchPageState>>{

@@ -1,6 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dogetv_flutter/models/video.dart';
 import 'package:dogetv_flutter/pages/search_page/search_item_component/action.dart';
+import 'package:dogetv_flutter/widgets/text_intro_widget/widget.dart';
+import 'package:dogetv_flutter/widgets/video_cover/widget.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
@@ -15,15 +16,7 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Hero(
-                  tag: video.id,
-                  child: CachedNetworkImage(
-                      width: 100,
-                      imageUrl: "http://v.popeye.vip" + video.cover,
-                      fit: BoxFit.cover,
-                      placeholder: (ctx, _) =>
-                          Image.asset("assets/images/404@2x.png")),
-                ),
+                VideoCover(path: video.cover, width: 100, heroTag: video.id),
                 SizedBox(width: 8),
                 Expanded(
                   child: Column(
@@ -37,41 +30,11 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 8),
-                      Text.rich(TextSpan(
-                          text: "导演: ",
-                          style: TextStyle(fontWeight: FontWeight.w500),
-                          children: [
-                            TextSpan(
-                                text: video.director,
-                                style: TextStyle(fontWeight: FontWeight.normal))
-                          ])),
-                      Text.rich(TextSpan(
-                          text: "类型: ",
-                          style: TextStyle(fontWeight: FontWeight.w500),
-                          children: [
-                            TextSpan(
-                                text: video.tag,
-                                style: TextStyle(fontWeight: FontWeight.normal))
-                          ])),
-                      Text.rich(TextSpan(
-                          text: "地区/上映: ",
-                          style: TextStyle(fontWeight: FontWeight.w500),
-                          children: [
-                            TextSpan(
-                                text: "${video.area}/${video.year}",
-                                style: TextStyle(fontWeight: FontWeight.normal))
-                          ])),
-                      Text.rich(
-                          TextSpan(
-                              text: "演员: ",
-                              style: TextStyle(fontWeight: FontWeight.w500),
-                              children: [
-                                TextSpan(
-                                    text: video.actor,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.normal))
-                              ]),
-                          maxLines: 2),
+                      TextIntro(label: "导演", text: video.director),
+                      TextIntro(label: "类型", text: video.tag),
+                      TextIntro(
+                          label: "地区/上映", text: "${video.area}/${video.year}"),
+                      TextIntro(label: "演员", text: video.actor, maxLines: 2),
                     ],
                   ),
                 ),

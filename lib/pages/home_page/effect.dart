@@ -2,13 +2,13 @@ import 'package:dogetv_flutter/models/video_detail.dart';
 import 'package:dogetv_flutter/pages/category_page/page.dart';
 import 'package:dogetv_flutter/pages/search_page/page.dart';
 import 'package:dogetv_flutter/pages/topic_page/page.dart';
-import 'package:dogetv_flutter/pages/video/page.dart';
+import 'package:dogetv_flutter/pages/video_page/page.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:dogetv_flutter/pages/home_page/action.dart';
 import 'package:dogetv_flutter/pages/home_page/state.dart';
 import 'package:dogetv_flutter/pages/tv_page/page.dart';
-import 'package:dogetv_flutter/repository/movie.dart';
+import 'package:dogetv_flutter/repository/dogeTV.dart';
 
 Effect<HomePageState> buildEffect() {
   return combineEffects(<Object, Effect<HomePageState>>{
@@ -25,12 +25,18 @@ Effect<HomePageState> buildEffect() {
 void _init(Action action, Context<HomePageState> ctx) async {
   APIs.getMovies().then((movies) {
     ctx.dispatch(HomePageActionCreator.didLoadAction(movies));
+  }).catchError((err) {
+    print(err.toString());
+    throw err;
   });
 }
 
 void _onFetch(Action action, Context<HomePageState> ctx) async {
   APIs.getMovies().then((movies) {
     ctx.dispatch(HomePageActionCreator.didLoadAction(movies));
+  }).catchError((err) {
+    print(err.toString());
+    throw err;
   });
 }
 

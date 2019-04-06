@@ -13,7 +13,7 @@ Widget buildView(Channel channel, dispatch, ViewService viewService) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image(
-              width: 70,
+              width: 60,
               fit: BoxFit.cover,
               image: NetworkImage(
                 channel.icon,

@@ -13,7 +13,7 @@ Widget buildView(VideoGridState state, dispatch, ViewService viewService) {
           crossAxisCount: 3,
           childAspectRatio: 0.62,
           mainAxisSpacing: 8.0,
-          crossAxisSpacing: 4.0),
+          crossAxisSpacing: 8.0),
     ),
   );
 }

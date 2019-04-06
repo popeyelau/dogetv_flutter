@@ -3,10 +3,11 @@ import 'package:dio/dio.dart';
 
 class APIClient {
   Dio dio;
+  static final APIClient _sharedInstace = new APIClient._internal();
 
-  factory APIClient() => _getInstance();
-  static APIClient get instace => _getInstance();
-  static APIClient _instance;
+  factory APIClient() {
+    return _sharedInstace;
+  }
 
   APIClient._internal() {
     if (dio == null) {
@@ -19,17 +20,17 @@ class APIClient {
       ));
       dio.interceptors
           .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
-        print("\n================== 请求数据 ==========================");
+        print("\n================== onRequest ==========================");
         print("url = ${options.uri.toString()}");
         print("headers = ${options.headers}");
         print("params = ${options.data}");
       }, onResponse: (Response response) {
-        print("\n================== 响应数据 ==========================");
+        print("\n================== onResponse ==========================");
         print("code = ${response.statusCode}");
         print("data = ${response.data}");
         print("\n");
       }, onError: (DioError e) {
-        print("\n================== 错误响应数据 ======================");
+        print("\n================== onError ======================");
         print("type = ${e.type}");
         print("message = ${e.message}");
         print("stackTrace = ${e.stackTrace}");
@@ -38,20 +39,12 @@ class APIClient {
     }
   }
 
-  static APIClient _getInstance() {
-    if (_instance == null) {
-      _instance = APIClient._internal();
-    }
-    return _instance;
-  }
-
   Future get(String url,
       {Map data, Options options, CancelToken cancelToken}) async {
     return _request(url, "GET",
         data: data, options: options, cancelToken: cancelToken);
   }
 
-  //post方法
   Future post(String url,
       {Map data, Options options, CancelToken cancelToken}) async {
     return _request(url, "POST",

@@ -32,9 +32,9 @@ Widget buildView(TVPageState state, dynamic dispatch, ViewService viewService) {
           itemCount: listAdapter.itemCount,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 1,
+              childAspectRatio: 1.2,
               mainAxisSpacing: 8.0,
-              crossAxisSpacing: 0.0),
+              crossAxisSpacing: 8.0),
         )),
   );
 }
