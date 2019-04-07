@@ -16,18 +16,15 @@ onPlay(Action action, Context ctx) async {
   List<Episode> episodes = action.payload["episodes"];
   String sourceURL = episode.url;
   Map<String, dynamic> payload = {"url": episode.url, "episodes": episodes};
-  if (sourceURL.endsWith(".m3u8")) {
-    Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
-      return PlayerPage().buildPage(payload);
-    }));
-    return;
+
+  if (!sourceURL.endsWith(".m3u8")) {
+    String streamURL = await APIs.getStreamURL(sourceURL);
+    if (streamURL == null) {
+      return;
+    }
+    payload["url"] = streamURL;
   }
 
-  String streamURL = await APIs.getStreamURL(sourceURL);
-  if (streamURL == null) {
-    return;
-  }
-  payload["url"] = streamURL;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return PlayerPage().buildPage(payload);
   }));

@@ -11,45 +11,41 @@ class VideoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.all(0),
-              // elevation: 5,
-              child: Stack(
-                children: [
-                  SizedBox.expand(
-                    child: VideoCover(
-                        path: video.cover,
-                        heroTag: heroEnable ? video.id : null),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                        padding: EdgeInsets.all(2),
-                        color: Colors.black.withAlpha(70),
-                        child: Text(
-                          video.state,
-                          maxLines: 1,
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(fontSize: 10, color: Colors.white),
-                        )),
-                  ),
-                ],
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          child: Stack(
+            children: [
+              SizedBox.expand(
+                child: VideoCover(
+                    path: video.cover, heroTag: heroEnable ? video.id : null),
               ),
-            ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                    padding: EdgeInsets.all(2),
+                    color: Colors.black.withAlpha(70),
+                    child: Text(
+                      video.state,
+                      maxLines: 1,
+                      overflow: TextOverflow.clip,
+                      style: TextStyle(fontSize: 10, color: Colors.white),
+                    )),
+              ),
+            ],
           ),
-          SizedBox(height: 6),
-          Text(
-            video.name,
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ]);
+        ),
+        SizedBox(height: 6),
+        Text(
+          video.name,
+          maxLines: 1,
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
+    );
   }
 }
