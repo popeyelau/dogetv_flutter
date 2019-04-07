@@ -1,7 +1,6 @@
 import 'package:dogetv_flutter/models/video.dart';
-
+import 'package:dogetv_flutter/pages/category_page/grid_item_component/component.dart';
 import 'state.dart';
-import '../grid_item_component/component.dart';
 import 'package:fish_redux/fish_redux.dart';
 
 class VideoGridListAdapter extends DynamicFlowAdapter<VideoGridState> {

@@ -7,7 +7,6 @@ enum HomePageAction {
   didLoad,
   onShowTV,
   onShowLibrary,
-  onShowTopic,
   onShowVideo,
   onShowSearch,
 }
@@ -31,11 +30,6 @@ class HomePageActionCreator {
 
   static Action onShowLibrary() {
     return Action(HomePageAction.onShowLibrary);
-  }
-
-  static Action onShowTopicAction(Topic topic) {
-    Map<String, dynamic> payload = {"topic": topic};
-    return Action(HomePageAction.onShowTopic, payload: payload);
   }
 
   static Action onShowVideoAction(String videoId) {

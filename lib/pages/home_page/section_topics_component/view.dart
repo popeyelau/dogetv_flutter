@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dogetv_flutter/pages/home_page/action.dart';
 import 'package:dogetv_flutter/models/home.dart';
+import 'package:dogetv_flutter/pages/home_page/section_topics_component/action.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ Widget buildView(List<Topic> state, dispatch, ViewService viewService) {
       itemBuilder: (BuildContext context, int index) {
         final topic = state[index];
         return GestureDetector(
-          onTap: () => dispatch(HomePageActionCreator.onShowTopicAction(topic)),
+          onTap: () => dispatch(SectionTopicsActionCreator.onSelect(topic)),
           child: Container(
             width: 100,
             margin: EdgeInsets.symmetric(horizontal: 8.0),
