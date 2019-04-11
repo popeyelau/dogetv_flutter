@@ -24,7 +24,7 @@ Widget buildView(
   return Scaffold(
     appBar: AppBar(
       centerTitle: true,
-      title: Text(state.videoDetail.video.name),
+      title: Text(state.videoDetail.video.info.name),
     ),
     body: Container(
         child: ListView.builder(

@@ -96,7 +96,7 @@ class APIs {
     }
 
     VideoDetail videoDetail = VideoDetail();
-    videoDetail.video = Video.fromJson(video["data"]);
+    videoDetail.video = VideoInfo.fromJson(video["data"]);
     videoDetail.episodes =
         (episodesMap["data"] as List).map((v) => Episode.fromJson(v)).toList();
     return videoDetail;
