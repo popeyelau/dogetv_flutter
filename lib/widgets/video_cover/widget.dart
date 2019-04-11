@@ -16,9 +16,8 @@ class VideoCover extends StatelessWidget {
     final String imageUrl =
         path.startsWith("http") ? path : "http://v.popeye.vip$path";
     Widget coverWidget = Container(
-        child: Card(
-      margin: EdgeInsets.all(0),
-      elevation: 5,
+        child: ClipRRect(
+      borderRadius: BorderRadius.circular(6),
       child: LimitedBox(
         maxWidth: 135,
         child: CachedNetworkImage(

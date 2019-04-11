@@ -5,6 +5,10 @@ class TVPageState implements Cloneable<TVPageState> {
   List<TV> groups = [];
   bool isIPTV = true;
 
+  String get title {
+    return isIPTV ? "联通IPTV" : "华文电视";
+  }
+
   @override
   TVPageState clone() {
     return TVPageState()

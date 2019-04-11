@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dogetv_flutter/pages/home_page/action.dart';
 import 'package:dogetv_flutter/models/home.dart';
 import 'package:dogetv_flutter/pages/home_page/section_topics_component/action.dart';
 import 'package:fish_redux/fish_redux.dart';
@@ -25,13 +24,6 @@ Widget buildView(List<Topic> state, dispatch, ViewService viewService) {
                   width: 100,
                   height: 100,
                   decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: 2,
-                          offset: Offset(0, 2),
-                          spreadRadius: 1,
-                          color: Colors.black26)
-                    ],
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: CachedNetworkImageProvider(

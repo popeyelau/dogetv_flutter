@@ -14,7 +14,10 @@ Widget buildView(
         centerTitle: true,
         title: TextField(
             autofocus: true,
+            textInputAction: TextInputAction.search,
             controller: state.controller,
+            onSubmitted: (text) =>
+                dispatch(SearchPageActionCreator.onFetchAction()),
             decoration: InputDecoration(hintText: "搜索电影/演员/导演")),
         actions: <Widget>[
           IconButton(
@@ -34,10 +37,15 @@ Widget buildView(
           ),
           key: state.easyRefreshKey,
           loadMore: () => dispatch(SearchPageActionCreator.onLoadMoreAction()),
-          child: ListView.builder(
+          child: ListView.separated(
             itemBuilder: listAdapter.itemBuilder,
             itemCount: listAdapter.itemCount,
-            itemExtent: 160,
+            separatorBuilder: (BuildContext context, int index) {
+              return Divider(
+                height: 1,
+                color: Theme.of(context).dividerColor,
+              );
+            },
           ),
         ),
         inAsyncCall: state.isLoading,

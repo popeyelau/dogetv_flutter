@@ -9,12 +9,13 @@ Widget buildView(Video video, dispatch, ViewService viewService) {
   return GestureDetector(
     onTap: () => dispatch(SearchItemActionCreator.onSelect(video)),
     child: Container(
+      height: 180,
       padding: EdgeInsets.all(8),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            VideoCover(path: video.cover, width: 100, heroTag: video.id),
+            VideoCover(path: video.cover, width: 120, heroTag: video.id),
             SizedBox(width: 8),
             Expanded(
               child: Column(

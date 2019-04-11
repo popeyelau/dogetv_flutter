@@ -24,10 +24,10 @@ Widget buildView(TVPageState state, dynamic dispatch, ViewService viewService) {
   return Scaffold(
     appBar: AppBar(
       centerTitle: true,
-      title: Text(state.isIPTV ? "联通IPTV" : "华文电视"),
+      title: Text(state.title),
       actions: <Widget>[
         IconButton(
-            icon: Icon(Icons.open_in_new),
+            icon: Icon(Icons.extension),
             onPressed: () =>
                 dispatch(TVPageActionCreator.onUpdateSourceAction())),
       ],

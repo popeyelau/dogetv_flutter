@@ -15,27 +15,35 @@ class VideoCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Expanded(
-          child: Stack(
-            children: [
-              SizedBox.expand(
-                child: VideoCover(
-                    path: video.cover, heroTag: heroEnable ? video.id : null),
-              ),
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Container(
-                    padding: EdgeInsets.all(2),
-                    color: Colors.black.withAlpha(70),
-                    child: Text(
-                      video.state,
-                      maxLines: 1,
-                      overflow: TextOverflow.clip,
-                      style: TextStyle(fontSize: 10, color: Colors.white),
-                    )),
-              ),
-            ],
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(6),
+            child: Stack(
+              children: [
+                SizedBox.expand(
+                  child: VideoCover(
+                      path: video.cover, heroTag: heroEnable ? video.id : null),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                      padding: EdgeInsets.all(4),
+                      decoration: new BoxDecoration(
+                        gradient: new LinearGradient(
+                            colors: [Colors.transparent, Colors.black87],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter),
+                      ),
+                      child: Text(
+                        video.state,
+                        maxLines: 1,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(fontSize: 10, color: Colors.white),
+                      )),
+                ),
+              ],
+            ),
           ),
         ),
         SizedBox(height: 6),
