@@ -15,8 +15,10 @@ class TVListAdapter extends DynamicFlowAdapter<TVPageState> {
 class TVListConnector extends ConnOp<TVPageState, List<ItemBean>> {
   @override
   List<ItemBean> get(TVPageState state) {
-    return state.channels
-        .map((channel) => ItemBean("channel", channel))
+    return state.groups
+        .map((v) => v.channels)
+        .expand((v) => v)
+        .map((v) => ItemBean("channel", v))
         .toList();
   }
 

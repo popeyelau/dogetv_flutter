@@ -13,10 +13,13 @@ Widget buildView(Channel channel, dispatch, ViewService viewService) {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            CachedNetworkImage(
-              width: 48,
-              fit: BoxFit.cover,
-              imageUrl: channel.icon,
+            Visibility(
+              visible: channel.icon.isNotEmpty,
+              child: CachedNetworkImage(
+                width: 48,
+                fit: BoxFit.cover,
+                imageUrl: channel.icon,
+              ),
             ),
             Container(
                 padding: EdgeInsets.all(8),

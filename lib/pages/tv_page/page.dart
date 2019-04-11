@@ -1,3 +1,4 @@
+import 'package:dogetv_flutter/pages/tv_page/action.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:dogetv_flutter/pages/tv_page/adapter.dart';
@@ -23,7 +24,13 @@ Widget buildView(TVPageState state, dynamic dispatch, ViewService viewService) {
   return Scaffold(
     appBar: AppBar(
       centerTitle: true,
-      title: Text("电视直播"),
+      title: Text(state.isIPTV ? "联通IPTV" : "华文电视"),
+      actions: <Widget>[
+        IconButton(
+            icon: Icon(Icons.open_in_new),
+            onPressed: () =>
+                dispatch(TVPageActionCreator.onUpdateSourceAction())),
+      ],
     ),
     body: Container(
         padding: EdgeInsets.all(8),

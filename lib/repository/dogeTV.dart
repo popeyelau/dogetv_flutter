@@ -73,13 +73,16 @@ class APIs {
     return topicVideos;
   }
 
-  static Future<List<Channel>> getTVChannels() async {
-    var response = await http.get("$BASE_URL/tv");
+  static Future<List<TV>> getTVChannels({bool isIPTV}) async {
+    var response = await http.get("$BASE_URL/tv${isIPTV ? "?f=iptv" : ""}");
     Map map = json.decode(response.body);
-    List<Channel> channels =
-        (map["data"] as List).map((v) => Channel.fromJson(v)).toList();
-    channels.sort((r1, r2) => r1.name.compareTo(r2.name));
-    return channels;
+
+    List<TV> groups = (map["data"] as List).map((v) => TV.fromJson(v)).toList();
+
+    groups.forEach(
+        (v) => v.channels.sort((r1, r2) => r1.name.compareTo(r2.name)));
+
+    return groups;
   }
 
   static Future<VideoDetail> getVideo(String videoId) async {

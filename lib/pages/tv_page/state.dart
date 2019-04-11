@@ -2,11 +2,14 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:dogetv_flutter/models/channel.dart';
 
 class TVPageState implements Cloneable<TVPageState> {
-  List<Channel> channels = [];
+  List<TV> groups = [];
+  bool isIPTV = true;
 
   @override
   TVPageState clone() {
-    return TVPageState()..channels = channels;
+    return TVPageState()
+      ..groups = groups
+      ..isIPTV = isIPTV;
   }
 }
 

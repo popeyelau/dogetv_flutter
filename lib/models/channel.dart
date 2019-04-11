@@ -19,3 +19,20 @@ class Channel {
     return data;
   }
 }
+
+class TV {
+  String categoryName;
+  List<Channel> channels;
+
+  TV({this.categoryName, this.channels});
+
+  TV.fromJson(Map<String, dynamic> json) {
+    categoryName = json['categoryName'];
+    if (json['channels'] != null) {
+      channels = List<Channel>();
+      json['channels'].forEach((v) {
+        channels.add(Channel.fromJson(v));
+      });
+    }
+  }
+}

@@ -37,7 +37,9 @@ class VideoDetailListConnector extends ConnOp<VideoPageState, List<ItemBean>> {
         "section-header", {"title": "分集", "subTitle": "无法播放? 尝试切换线路"}));
     items.add(ItemBean("episodes", state.videoDetail.episodes));
     items.add(ItemBean("section-header", {"title": "猜你喜欢", "subTitle": null}));
-    items.add(ItemBean("grid", state.videoDetail.video.recommends));
+    items.add(
+        ItemBean("grid", state.videoDetail.video.recommends.take(6).toList()));
+
     return items;
   }
 
