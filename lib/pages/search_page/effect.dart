@@ -12,10 +12,20 @@ Effect<SearchPageState> buildEffect() {
   });
 }
 
-void _init(Action action, Context<SearchPageState> ctx) async {}
+void _init(Action action, Context<SearchPageState> ctx) async {
+  var controller = ctx.state.scrollController;
+  controller.addListener(() {
+    if (!ctx.state.isLoading &&
+        controller.position.pixels == controller.position.maxScrollExtent) {
+      print("load more ...........");
+      ctx.dispatch(SearchPageActionCreator.onLoadMoreAction());
+    }
+  });
+}
 
 void _dispose(Action action, Context<SearchPageState> ctx) async {
   ctx.state.controller.dispose();
+  ctx.state.scrollController.dispose();
 }
 
 void _onLoadMore(Action action, Context<SearchPageState> ctx) async {

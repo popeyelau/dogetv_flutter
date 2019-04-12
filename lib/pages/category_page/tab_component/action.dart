@@ -7,12 +7,17 @@ enum CategoryTabPageAction {
   didLoad,
   onUpdateQuery,
   onLoadMore,
-  didLoadMore
+  didLoadMore,
+  scollToTop,
 }
 
 class CategoryTabPageActionCreator {
   static Action onLoadAction(bool isLoading) {
     return Action(CategoryTabPageAction.onLoad, payload: isLoading);
+  }
+
+  static Action scrollToTop() {
+    return Action(CategoryTabPageAction.scollToTop);
   }
 
   static Action didLoadAction(CategoryVideo videos) {

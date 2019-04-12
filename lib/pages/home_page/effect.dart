@@ -18,19 +18,14 @@ Effect<HomePageState> buildEffect() {
 }
 
 void _init(Action action, Context<HomePageState> ctx) async {
-  APIs.getMovies().then((movies) {
-    ctx.dispatch(HomePageActionCreator.didLoadAction(movies));
-  }).catchError((err) {
-    print(err.toString());
+  APIs.getHome().then((home) {
+    ctx.dispatch(HomePageActionCreator.didLoadAction(home));
   });
 }
 
 void _onFetch(Action action, Context<HomePageState> ctx) async {
-  APIs.getMovies().then((movies) {
-    ctx.dispatch(HomePageActionCreator.didLoadAction(movies));
-  }).catchError((err) {
-    print(err.toString());
-    throw err;
+  APIs.getHome().then((home) {
+    ctx.dispatch(HomePageActionCreator.didLoadAction(home));
   });
 }
 

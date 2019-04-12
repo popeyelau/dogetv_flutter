@@ -15,14 +15,22 @@ Effect<CategoryTabPageState> buildEffect() {
 }
 
 void _init(Action action, Context<CategoryTabPageState> ctx) async {
+  var controller = ctx.state.controller;
+  controller.addListener(() {
+    if (!ctx.state.isLoading &&
+        controller.position.pixels == controller.position.maxScrollExtent) {
+      print("load more ...........");
+      ctx.dispatch(CategoryTabPageActionCreator.onLoadMoreAction());
+    }
+  });
+
   APIs.getVideos(ctx.state.current).then((videos) {
     ctx.dispatch(CategoryTabPageActionCreator.didLoadAction(videos));
   });
 }
 
 void _dispose(Action action, Context<CategoryTabPageState> ctx) async {
-  ctx.state.easyRefreshKey = null;
-  ctx.state.headerKey = null;
+  ctx.state.controller.dispose();
 }
 
 void _onFetch(Action action, Context<CategoryTabPageState> ctx) async {

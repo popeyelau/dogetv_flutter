@@ -30,5 +30,6 @@ SearchPageState didLoadMore(SearchPageState state, Action action) {
   List<Video> results = action.payload;
   newState.pageIndex++;
   newState.results.addAll(results);
+  newState.isLoading = false;
   return newState;
 }

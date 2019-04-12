@@ -1,14 +1,12 @@
 import 'package:dogetv_flutter/models/video.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class SearchPageState implements Cloneable<SearchPageState> {
   List<Video> results = [];
   int pageIndex = 1;
   TextEditingController controller = TextEditingController();
-  GlobalKey<EasyRefreshState> easyRefreshKey = GlobalKey<EasyRefreshState>();
-  GlobalKey<RefreshFooterState> headerKey = GlobalKey<RefreshFooterState>();
+  ScrollController scrollController = ScrollController();
   bool isLoading = false;
   @override
   SearchPageState clone() {
@@ -17,8 +15,7 @@ class SearchPageState implements Cloneable<SearchPageState> {
       ..results = results
       ..controller = controller
       ..pageIndex = pageIndex
-      ..easyRefreshKey = easyRefreshKey
-      ..headerKey = headerKey;
+      ..scrollController = scrollController;
   }
 }
 

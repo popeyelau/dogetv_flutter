@@ -27,8 +27,9 @@ dependencies:
   http: ^0.12.0+2
   cached_network_image: ^0.7.0
   chewie: ^0.9.7
-  flutter_easyrefresh: ^1.2.7
   modal_progress_hud: ^0.1.3
+
+
 
 
 

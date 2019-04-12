@@ -5,10 +5,12 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
 Widget buildView(Channel channel, dispatch, ViewService viewService) {
-  return GestureDetector(
-    onTap: () => dispatch(TVGridItemActionCreator.didSelect(channel.url)),
-    child: Card(
-      elevation: 5.0,
+  return Material(
+    elevation: 5.0,
+    borderRadius: BorderRadius.circular(6),
+    child: InkWell(
+      borderRadius: BorderRadius.circular(6),
+      onTap: () => dispatch(TVGridItemActionCreator.didSelect(channel.url)),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,

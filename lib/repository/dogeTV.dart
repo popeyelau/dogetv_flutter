@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 class APIs {
   static const String BASE_URL = "https://tv.popeye.vip";
 
-  static Future<Home> getMovies() async {
+  static Future<Home> getHome() async {
     Future getTopics = http.get("$BASE_URL/topics");
     Future getSections = http.get("$BASE_URL/videos");
 
