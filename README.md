@@ -1,16 +1,18 @@
-# dogetv_flutter
+# dogeTV Flutter
 
-A new Flutter project.
+A [fish-redux](https://github.com/alibaba/fish-redux) example
 
-## Getting Started
+just for fun.
 
-This project is a starting point for a Flutter application.
+> 等 fish-redux 官方文档全了, 再改一下
 
-A few resources to get you started if this is your first Flutter project:
+![Demo](./screenshots/1.png)
+![Demo](./screenshots/2.png)
+![Demo](./screenshots/3.png)
+![Demo](./screenshots/4.png)
+![Demo](./screenshots/5.png)
+![Demo](./screenshots/6.png)
+![Demo](./screenshots/7.png)
+![Demo](./screenshots/8.png)
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
