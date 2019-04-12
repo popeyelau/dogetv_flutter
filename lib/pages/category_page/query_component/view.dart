@@ -57,6 +57,6 @@ List<Widget> buildQuerySet(QueryPanelState state, dynamic dispatch) {
 Widget buildView(QueryPanelState state, dispatch, ViewService viewService) {
   return SliverFixedExtentList(
     delegate: SliverChildListDelegate(buildQuerySet(state, dispatch)),
-    itemExtent: 40,
+    itemExtent: 44,
   );
 }
