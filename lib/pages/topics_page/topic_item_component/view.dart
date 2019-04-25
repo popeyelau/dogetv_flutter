@@ -16,7 +16,7 @@ Widget buildView(Topic topic, dispatch, ViewService viewService) {
         image: DecorationImage(
           fit: BoxFit.cover,
           image: CachedNetworkImageProvider(
-            "http://v.popeye.vip" + topic.cover,
+            "http://www.haitum.com" + topic.cover,
           ),
         ),
       ),
@@ -42,7 +42,7 @@ Widget buildView(Topic topic, dispatch, ViewService viewService) {
                             child: CircleAvatar(
                                 radius: 40,
                                 backgroundImage: CachedNetworkImageProvider(
-                                  "http://v.popeye.vip" + topic.cover,
+                                  "http://www.haitum.com" + topic.cover,
                                 )),
                           ),
                           Expanded(

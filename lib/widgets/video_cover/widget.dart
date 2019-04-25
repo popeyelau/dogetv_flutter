@@ -14,7 +14,7 @@ class VideoCover extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String imageUrl =
-        path.startsWith("http") ? path : "http://v.popeye.vip$path";
+        path.startsWith("http") ? path : "http://www.haitum.com$path";
     Widget coverWidget = Container(
         child: ClipRRect(
       borderRadius: BorderRadius.circular(6),
