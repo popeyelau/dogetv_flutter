@@ -26,8 +26,7 @@ Widget buildView(List<Topic> state, dispatch, ViewService viewService) {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: CachedNetworkImageProvider(
-                          "http://www.haitum.com" + topic.cover,
+                      image: CachedNetworkImageProvider(topic.cover,
                           errorListener: () {}),
                     ),
                     borderRadius: BorderRadius.circular(50),

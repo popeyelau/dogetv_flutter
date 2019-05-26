@@ -23,9 +23,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  fish_redux: ^0.1.6
+  fish_redux: ^0.1.8
   http: ^0.12.0+2
-  cached_network_image: ^0.7.0
+  cached_network_image: ^0.8.0
   chewie: ^0.9.7
   modal_progress_hud: ^0.1.3
 

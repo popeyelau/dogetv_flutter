@@ -12,9 +12,6 @@ class SearchPage extends Page<SearchPageState, Map<String, dynamic>> {
           effect: buildEffect(),
           initState: initState,
           reducer: buildReducer(),
-          onError: (ex, ctx) {
-            print(ex.toString());
-          },
           dependencies: Dependencies<SearchPageState>(
               adapter: SearchResultListAdapter(),
               slots: <String, Dependent<SearchPageState>>{}),

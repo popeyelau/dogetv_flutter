@@ -13,16 +13,17 @@ class HomePage extends Page<HomePageState, Map<String, dynamic>> {
           effect: buildEffect(),
           initState: initState,
           reducer: buildReducer(),
-          onError: onMessageError,
+//          onError: onMessageError,
           dependencies: Dependencies<HomePageState>(
               adapter: MovieGroupAdapter(),
               slots: <String, Dependent<HomePageState>>{}),
         );
 }
 
+/*
 bool onMessageError(Exception e, Context<HomePageState> ctx) {
   ctx.state.scaffoldKey.currentState.showSnackBar(SnackBar(
     content: Text("hello world"),
   ));
   return false;
-}
+}*/
