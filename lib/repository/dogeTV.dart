@@ -9,7 +9,7 @@ import 'package:dogetv_flutter/models/video_detail.dart';
 import 'package:http/http.dart' as http;
 
 class APIs {
-  static const String BASE_URL = "https://tv.popeye.vip";
+  static const String BASE_URL = "http://111.231.243.232/";
 
   static Future<Home> getHome() async {
     Future getTopics = http.get("$BASE_URL/topics");
